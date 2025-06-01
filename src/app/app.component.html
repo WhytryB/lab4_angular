@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Restaurant Booking</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/restaurants">Ресторани</button>
+    <button mat-button routerLink="/bookings" *ngIf="authService.isAuthenticated() | async">Мої бронювання</button>
+    <button mat-button routerLink="/login" *ngIf="!(authService.isAuthenticated() | async)">Вхід</button>
+    <button mat-button (click)="authService.signOut()" *ngIf="authService.isAuthenticated() | async">Вихід</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
